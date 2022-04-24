@@ -25,29 +25,48 @@ const createUser = async (userCreateDto: UserCreateDto): Promise<PostBaseRespons
         console.log(error);
         throw error;
     }
-}
+};
 
 const updateUser = async (userId: string, userUpdateDto: UserUpdateDto) => {
     try {
-        // findByIdAndUpdate
-        await User.findByIdAndUpdate(userId, userUpdateDto);
+        const updatedUser = {
+            name : userUpdateDto.name,
+            phone : userUpdateDto.phone,
+            email : userUpdateDto.email,
+            age : userUpdateDto.age,
+            school : userUpdateDto.school
+        }
+        await User.findByIdAndUpdate(userId, updatedUser);
         
     } catch (error) {
         console.log(error);
         throw error;
     }
-}
+};
 
-const findUserById = async (userId: string): Promise<UserResponseDto> => {
+const findUserById = async (userId: string) => {
     try {
-        const user = await User.findById(userId);
+        const user: UserResponseDto | null = await User.findById(userId);
         return user;
     } catch (error) {
-
+        console.log(error);
+        throw error;
     }
-}
+};
+
+const deleteUser = async (userId: string) => {
+    try {
+        await User.findByIdAndDelete(userId);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
 
 export default {
     createUser,
-    updateUser
+    updateUser,
+    findUserById,
+    deleteUser
 }
