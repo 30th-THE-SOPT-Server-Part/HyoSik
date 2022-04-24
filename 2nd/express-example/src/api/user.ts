@@ -10,4 +10,4 @@ router.get('/', (req: Request, res: Response) => {
     });
 });
 
-module.exports = router;4
+module.exports = router;
