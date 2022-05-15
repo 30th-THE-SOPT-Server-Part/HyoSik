@@ -1,6 +1,7 @@
 import { Router } from "express";
 import ReviewController from "../controllers/ReviewController";
 import { body } from "express-validator/check";
+import auth from "../middlewares/auth";
 
 const router: Router = Router();
 
@@ -10,6 +11,6 @@ router.post('/movies/:movieId', [ // express-validator을 적용해 body 값이 
     body('content').notEmpty()
 ], ReviewController.createReview);
 
-router.get('/movies/:movieId', ReviewController.getReviews);
+router.get('/movies/:movieId', auth, ReviewController.getReviews);
 
 export default router;
