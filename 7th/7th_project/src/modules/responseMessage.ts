@@ -23,6 +23,7 @@ const message = {
     CREATE_MOVIE_SUCCESS: '영화 생성 성공',
     CREATE_MOVIE_COMMENT_SUCCESS: '영화 코멘트 생성 성공',
     READ_MOVIE_SUCCESS: '영화 조회 성공',
+    SEARCH_MOVIE_SUCCESS: '영화 검색 성공',
 
     // 파일
     CREATE_FILE_SUCCESS: '파일 생성 성공',
